@@ -6,12 +6,17 @@
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <h1>¡Bienvenido al Recomendador de Recetas!</h1>
-  <input type="text" id="ingredientes" placeholder="Escribe ingredientes separados por coma" />
-  <button onclick="buscarRecetas()">Buscar</button>
+  <header class="encabezado">
+      <img src="https://png.pngtree.com/thumb_back/fw800/background/20240731/pngtree-a-chef-is-chopping-carrots-and-herbs-on-wooden-cutting-board-image_16117025.jpg" alt="Imagen decorativa" class="banner">
+    <h1>¡Bienvenido al Recomendador de Recetas!</h1>
+  </header>  
+  <main class="contenido">
+    <input type="text" id="ingredientes" placeholder="Escribe ingredientes separados por coma" />
+    <button onclick="BuscarRecetas()">Buscar</button>
+    <div id="resultados"></div>
+  </main>
 
-  <div id="resultados"></div>
-
+  
   <script src="script.js"></script>
 </body>
 </html>
