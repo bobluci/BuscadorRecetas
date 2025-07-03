@@ -2,7 +2,7 @@ import requests
 import json
 
 # API Key de Spoonacular
-API_KEY = 'TU_API_KEY'  # Reemplaza con tu propia API Key
+API_KEY = 'b27df7a1920b4489a4d0ead13b164966'  # Reemplaza con tu propia API Key
 
 # Ingredientes a buscar (en inglés)
 ingredientes = 'lettuce,tomato,cheese'
