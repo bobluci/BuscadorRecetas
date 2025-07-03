@@ -81,6 +81,28 @@ button:hover {
   box-shadow: 2px 2px 8px rgba(160, 125, 96, 0.3);
 }
 
+/* Resultado estilo tarjeta */
+#resultados .ingrediente {
+  background-color: #fffaf4;
+  border: 1px solid #e5d5c2;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px auto;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Imagen dentro de cada tarjeta de ingrediente (proporcionado por el api)*/
+.ingrediente img {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
 /* Sección del pie de página */
 footer {
   background-color: #f0e5d8;
