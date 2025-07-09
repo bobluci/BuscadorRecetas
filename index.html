@@ -3,20 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <title>Recomendador de Recetas</title>
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="estilos/main.css"> <!-- Ajusta si tu carpeta se llama distinto -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .filtros {
+      margin-bottom: 20px;
+    }
+    label {
+      margin-right: 10px;
+    }
+    input, select, button {
+      margin-right: 15px;
+      padding: 6px;
+    }
+    .receta {
+      margin-bottom: 30px;
+    }
+    img {
+      max-width: 300px;
+      display: block;
+    }
+  </style>
 </head>
 <body>
   <header class="encabezado">
-      <img src="https://png.pngtree.com/thumb_back/fw800/background/20240731/pngtree-a-chef-is-chopping-carrots-and-herbs-on-wooden-cutting-board-image_16117025.jpg" alt="Imagen decorativa" class="banner">
+    <img src="https://png.pngtree.com/thumb_back/fw800/background/20240731/pngtree-a-chef-is-chopping-carrots-and-herbs-on-wooden-cutting-board-image_16117025.jpg" alt="Imagen decorativa" class="banner">
     <h1>¡Bienvenido al Recomendador de Recetas!</h1>
-  </header>  
+  </header>
+
   <main class="contenido">
-    <input type="text" id="ingredientes" placeholder="Escribe ingredientes separados por coma" />
-    <button onclick="BuscarRecetas()">Buscar</button>
+
+    <!-- 🔽 Filtros para la búsqueda -->
+    <section class="filtros">
+      <label for="tipo">Tipo de receta:</label>
+      <select id="tipo">
+        <option value="">--Cualquiera--</option>
+        <option value="main course">Plato principal</option>
+        <option value="dessert">Postre</option>
+        <option value="snack">Snack</option>
+        <option value="breakfast">Desayuno</option>
+      </select>
+
+      <label for="tiempo">Tiempo máx. (minutos):</label>
+      <input type="number" id="tiempo" min="5" max="120" placeholder="Ej: 30">
+
+      <label for="dieta">Dieta:</label>
+      <select id="dieta">
+        <option value="">--Ninguna--</option>
+        <option value="vegetarian">Vegetariana</option>
+        <option value="vegan">Vegana</option>
+        <option value="gluten free">Sin gluten</option>
+      </select>
+    </section>
+
+    <!-- 📝 Input de ingredientes -->
+    <input type="text" id="ingredientes" placeholder="Escribe ingredientes separados por coma (ej: pollo, papa, ajo)" />
+    <button onclick="buscarRecetas()">Buscar</button>
+
+    <!-- 📋 Resultados -->
     <div id="resultados"></div>
+
   </main>
 
-  
   <script src="script.js"></script>
 </body>
 </html>
