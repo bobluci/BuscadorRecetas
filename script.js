@@ -1,61 +1,75 @@
-const API_KEY = "TU_API_KEY"; // ← reemplázala localmente por tu clave real
+const API_KEY = "TU_API_KEY"; // ← Reemplaza esto con tu clave real
 
-// Esta es la función que se encarga de buscar ingredientes mediante la API
+// Diccionario de ingredientes español → inglés
+const diccionario = {
+  "pollo": "chicken",
+  "papa": "potato",
+  "tomate": "tomato",
+  "cebolla": "onion",
+  "ajo": "garlic",
+  "arroz": "rice",
+  "leche": "milk",
+  "queso": "cheese",
+  "carne": "beef",
+  "huevo": "egg",
+  "pan": "bread",
+  "manzana": "apple",
+  "plátano": "banana"
+};
+
+// Traduce una lista de ingredientes en español
+function traducir(ingredientesEsp) {
+  return ingredientesEsp.map(esp => diccionario[esp.trim().toLowerCase()] || esp.trim().toLowerCase());
+}
+
+// Función principal para buscar recetas
 function buscarRecetas() {
   const input = document.getElementById("ingredientes").value;
-  const ingredientes = input.split(",").map(i => i.trim()).join(",");
+  const tipo = document.getElementById("tipo").value;
+  const tiempo = document.getElementById("tiempo").value;
+  const dieta = document.getElementById("dieta").value;
 
-  // URL para hacer la solicitud a la API
-  // ¡IMPORTANTE! Añadido el parámetro '&language=es' para solicitar resultados en español.
-  const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientes}&number=10&ranking=1&ignorePantry=true&apiKey=${API_KEY}&language=es`;
+  const ingredientesArray = input.split(",");
+  const ingredientes = traducir(ingredientesArray).join(",");
 
-  // Hacemos la solicitud HTTP usando fetch para obtener los datos desde la API
+  let url = `https://api.spoonacular.com/recipes/complexSearch?includeIngredients=${ingredientes}&number=10&apiKey=${API_KEY}`;
+
+  if (tipo) url += `&type=${tipo}`;
+  if (tiempo) url += `&maxReadyTime=${tiempo}`;
+  if (dieta) url += `&diet=${dieta}`;
+
+  const contenedor = document.getElementById("resultados");
+  contenedor.innerHTML = "<p>Buscando recetas...</p>";
+
   fetch(url)
     .then(res => res.json())
     .then(data => {
-      const contenedor = document.getElementById("resultados");
       contenedor.innerHTML = "";
 
-      if (data.length === 0) {
-        contenedor.innerHTML = "<p>No se encontraron recetas con esos ingredientes.</p>";
+      if (!data.results || data.results.length === 0) {
+        contenedor.innerHTML = "<p>No se encontraron recetas con esos filtros.</p>";
         return;
       }
 
-      // Mostrar los resultados de recetas en pantalla
-      data.forEach(receta => {
+      data.results.forEach(receta => {
         const divReceta = document.createElement('div');
         divReceta.classList.add('receta');
 
-        // Título de la receta (debería venir en español si la API lo soporta)
-        const tituloReceta = document.createElement('h2');
-        tituloReceta.textContent = receta.title;
-        divReceta.appendChild(tituloReceta);
+        const titulo = document.createElement('h2');
+        titulo.textContent = receta.title;
+        divReceta.appendChild(titulo);
 
-        // Imagen de la receta
-        const imagenReceta = document.createElement('img');
-        imagenReceta.src = receta.image;
-        imagenReceta.alt = `Imagen de ${receta.title}`;
-        divReceta.appendChild(imagenReceta);
+        const imagen = document.createElement('img');
+        imagen.src = receta.image;
+        imagen.alt = `Imagen de ${receta.title}`;
+        divReceta.appendChild(imagen);
 
-        // Ingredientes usados (la API no siempre los traduce al español)
-        const pIngredientesUsados = document.createElement('p');
-        const nombresUsados = receta.usedIngredients.map(ing => ing.name).join(', ');
-        pIngredientesUsados.innerHTML = `<strong>Ingredientes que tienes (${receta.usedIngredientCount}):</strong> ${nombresUsados || 'Ninguno'}.`;
-        divReceta.appendChild(pIngredientesUsados);
+        const link = document.createElement('a');
+        link.href = `https://spoonacular.com/recipes/${receta.title.replace(/\s+/g, '-')}-${receta.id}`;
+        link.textContent = "Ver receta completa";
+        link.target = "_blank";
+        divReceta.appendChild(link);
 
-        // Ingredientes faltantes (la API no siempre los traduce al español)
-        const pIngredientesFaltantes = document.createElement('p');
-        const nombresFaltantes = receta.missedIngredients.map(ing => ing.name).join(', ');
-        pIngredientesFaltantes.innerHTML = `<strong>Ingredientes que faltan (${receta.missedIngredientCount}):</strong> ${nombresFaltantes || 'Ninguno'}.`;
-        divReceta.appendChild(pIngredientesFaltantes);
-
-        // Enlace a la receta completa en Spoonacular
-        const enlaceCompleto = document.createElement('a');
-        enlaceCompleto.href = `https://spoonacular.com/recipes/${receta.title.replace(/\s+/g, '-')}-${receta.id}`;
-        enlaceCompleto.textContent = "Ver receta completa";
-        enlaceCompleto.target = "_blank";
-        divReceta.appendChild(enlaceCompleto);
-        
         const hr = document.createElement('hr');
         divReceta.appendChild(hr);
 
@@ -64,6 +78,6 @@ function buscarRecetas() {
     })
     .catch(err => {
       console.error("Error:", err);
-      alert("Ocurrió un error al buscar las recetas. Por favor, revisa tu conexión o tu clave API.");
+      alert("Ocurrió un error al buscar las recetas. Verifica tu conexión o tu clave API.");
     });
 }
