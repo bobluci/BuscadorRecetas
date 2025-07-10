@@ -8,6 +8,12 @@ body {
   background-size: repeat; /* para repetir la textura */
 }
 
+/* 📝 TÍTULOS SECUNDARIOS */
+h2, h3 {
+  font-family: 'Playfair Display', serif; /* Fuente elegante para títulos */
+  color: #5a4633; /* Marrón más intenso para contraste */
+}
+
 /* Sección del encabezado con imagen */
 .encabezado {
   position: relative;
@@ -44,6 +50,43 @@ body {
   align-items: center;
 }
 
+/* 🧪 Grupo de filtros visualmente destacado */
+.filtros {
+  background-color: #fffaf4;
+  border: 1px solid #e5d5c2;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 30px 0;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+  width: 90%;
+  max-width: 600px;
+}
+
+.filtros h2 {
+  font-family: 'Playfair Display', serif;
+  color: #a67c52;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+/* Estilo general de los select */
+select {
+  background-color: #f2eae2;
+  border: 1px solid #c8a97e;
+  border-radius: 25px;
+  padding: 10px;
+  font-family: 'Quicksand', sans-serif;
+  color: #4e3d32;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo al pasar el mouse por los select */
+select:hover {
+  border-color: #c8a97e;
+  background-color: #f2eae2;
+  cursor: pointer;
+}
+
 /* Estilo compartido del input y botón */
 input, button {
   font-size: 1em;
@@ -62,6 +105,15 @@ input {
   background-color: #f2eae2;
   border: 1px solid #c8a97e;
   color: #4e3d32;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Estilo para las etiquetas de formulario */
+label {
+  font-weight: 500;
+  margin-right: 10px;
+  display: inline-block;
+  color: #5a4633;
 }
 
 /* Estilo del botón */
@@ -72,6 +124,7 @@ button {
   letter-spacing: 0.5px;
   padding: 10px 25px;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 /* Efecto para cuando se pasa el mouse por encima del botón */
@@ -92,6 +145,26 @@ button:hover {
   display: flex;
   align-items: center;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ✨ Animación al pasar el mouse por la tarjeta */
+#resultados .ingrediente:hover {
+  transform: scale(1.02); /* agranda suavemente */
+  opacity: 0.95; /* le da un efecto sutil de desvanecimiento */
+}
+
+/* Mensajes especiales como “sin resultados” o errores */
+.mensaje {
+  font-style: italic;
+  color: #a67c52;
+  background-color: #fff4ec;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  text-align: center;
+  max-width: 500px;
 }
 
 /* Imagen dentro de cada tarjeta de ingrediente (proporcionado por el api)*/
@@ -113,3 +186,10 @@ footer {
   margin-top: 50px;
   border-top: 1px solid #d4c0aa;
 }
+
+/* Efecto al pasar el mouse por el pie de página */
+footer:hover {
+  background-color: #e5dac7;
+  color: #4e3d32;
+}
+
