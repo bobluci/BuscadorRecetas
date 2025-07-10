@@ -2,71 +2,73 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Recomendador de Recetas</title>
-  <link rel="stylesheet" href="estilos/main.css"> <!-- Ajusta si tu carpeta se llama distinto -->
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    .filtros {
-      margin-bottom: 20px;
-    }
-    label {
-      margin-right: 10px;
-    }
-    input, select, button {
-      margin-right: 15px;
-      padding: 6px;
-    }
-    .receta {
-      margin-bottom: 30px;
-    }
-    img {
-      max-width: 300px;
-      display: block;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Lo que hay en la refri</title>
+
+  <!-- Tipografías decorativas -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand&display=swap" rel="stylesheet">
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="styles/main.css">
 </head>
+
 <body>
-  <header class="encabezado">
-    <img src="https://png.pngtree.com/thumb_back/fw800/background/20240731/pngtree-a-chef-is-chopping-carrots-and-herbs-on-wooden-cutting-board-image_16117025.jpg" alt="Imagen decorativa" class="banner">
-    <h1>¡Bienvenido al Recomendador de Recetas!</h1>
+
+  <!-- 🧢 Encabezado con imagen de fondo y texto superpuesto -->
+  <header class="encabezado-fondo">
+    <div class="caja-texto">
+      <h1>Lo que hay en la refri</h1>
+      <h2>-100% real, no fake 🥐</h2>
+    </div>
   </header>
 
+  <!-- 🧁 Contenido principal -->
   <main class="contenido">
-
-    <!-- 🔽 Filtros para la búsqueda -->
     <section class="filtros">
-      <label for="tipo">Tipo de receta:</label>
-      <select id="tipo">
-        <option value="">--Cualquiera--</option>
-        <option value="main course">Plato principal</option>
-        <option value="dessert">Postre</option>
-        <option value="snack">Snack</option>
-        <option value="breakfast">Desayuno</option>
-      </select>
+      <h2>🔍 Personaliza tu búsqueda</h2>
 
-      <label for="tiempo">Tiempo máx. (minutos):</label>
-      <input type="number" id="tiempo" min="5" max="120" placeholder="Ej: 30">
+      <div class="grupo-filtro">
+        <label for="tipo">🍽 Tipo de receta:</label>
+        <select id="tipo">
+          <option value="">--Cualquiera--</option>
+          <option value="main course">Plato principal</option>
+          <option value="dessert">Postre</option>
+          <option value="snack">Snack</option>
+          <option value="breakfast">Desayuno</option>
+        </select>
+      </div>
 
-      <label for="dieta">Dieta:</label>
-      <select id="dieta">
-        <option value="">--Ninguna--</option>
-        <option value="vegetarian">Vegetariana</option>
-        <option value="vegan">Vegana</option>
-        <option value="gluten free">Sin gluten</option>
-      </select>
+      <div class="grupo-filtro">
+        <label for="tiempo">⏱ Tiempo máx. (minutos):</label>
+        <input type="number" id="tiempo" min="5" max="120" placeholder="Ej: 30">
+      </div>
+
+      <div class="grupo-filtro">
+        <label for="dieta">🥗 Dieta:</label>
+        <select id="dieta">
+          <option value="">--Ninguna--</option>
+          <option value="vegetarian">Vegetariana</option>
+          <option value="vegan">Vegana</option>
+          <option value="gluten free">Sin gluten</option>
+        </select>
+      </div>
     </section>
 
-    <!-- 📝 Input de ingredientes -->
-    <input type="text" id="ingredientes" placeholder="Escribe ingredientes separados por coma (ej: pollo, papa, ajo)" />
-    <button onclick="buscarRecetas()">Buscar</button>
+    <!-- 🔍 Buscador de ingredientes -->
+    <div class="buscador-ingredientes">
+      <input type="text" id="ingredientes" class="campo-ingredientes" placeholder="Escribe ingredientes separados por coma (ej: pollo, papa, ajo)">
+      <button class="boton-buscar" onclick="buscarRecetas()">🔎 Buscar recetas</button>
+    </div>
 
-    <!-- 📋 Resultados -->
+    <!-- 📋 Resultados de recetas -->
     <div id="resultados"></div>
-
   </main>
+
+  <!-- 🪄 Pie de página -->
+  <footer>
+    Hecho por Grupo 1 de Lenguaje de Programación II 🍳 — 100% original - Universidad Nacional Agraria La Molina
+  </footer>
 
   <script src="script.js"></script>
 </body>
