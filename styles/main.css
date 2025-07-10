@@ -8,26 +8,46 @@ body {
   background-size: repeat; /* para repetir la textura */
 }
 
-/* 📝 TÍTULOS SECUNDARIOS */
-h2, h3 {
-  font-family: 'Playfair Display', serif; /* Fuente elegante para títulos */
-  color: #5a4633; /* Marrón más intenso para contraste */
-}
-
-/* Sección del encabezado con imagen */
-.encabezado {
+/* === ENCABEZADO CON FONDO === */
+.encabezado-fondo {
+  background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20240731/pngtree-a-chef-is-chopping-carrots-and-herbs-on-wooden-cutting-board-image_16117025.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
   position: relative;
-  width: 100%;
-  max-height: 400px;
-  overflow: hidden; /* Por si hay exceso de contenido superpuesto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Imagen de fondo en el encabezado */
-.banner {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  filter: brightness(70%);
+/* === TEXTOS DENTRO DEL HEADER === */
+.caja-texto {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 25px 40px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.caja-texto h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2em;
+  color: white;
+  margin: 0;
+  line-height: 1.1;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.caja-texto h2 {
+  font-size: 1.5em;
+  font-family: 'Quicksand', sans-serif;
+  color: white;
+  margin-top: 10px;
+}
+
+/* === TÍTULOS SECUNDARIOS === */
+h2, h3 {
+  font-family: 'Playfair Display', serif;
+  color: #5a4633;
 }
 
 /* Estilo del titulo en el encabezado (encima de la imagen) */
@@ -41,45 +61,6 @@ h2, h3 {
   background-color: rgba(0, 0, 0, 0.4); /* fondo medio transparente */
   padding: 10px 20px;
   border-radius: 10px;
-}
-
-/* 🖼 Imagen del banner que se adapta sin recortes */
-.banner {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover; /* Asegura que no se deforme ni se corte */
-  display: block;
-}
-
-/* 🪄 Cuadro de texto superpuesto con fondo negro semi-transparente */
-.overlay-texto {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.6); /* Fondo negro translúcido */
-  padding: 20px 30px;
-  border-radius: 12px;
-  text-align: center;
-  z-index: 1;
-}
-
-/* ✏️ Título principal con fuente elegante e impacto */
-.overlay-texto h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.5em;
-  color: white;
-  margin: 0;
-  line-height: 1.2;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
-}
-
-/* 📋 Subtítulo con emoji y coherencia visual */
-.overlay-texto h2 {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 1.5em;
-  color: white;
-  margin: 10px 0 0;
 }
 
 /* Estilo de la sección del contenido principal */
@@ -157,8 +138,17 @@ label {
   color: #5a4633;
 }
 
+/* === INPUT DE INGREDIENTES CON ESPACIO SUFICIENTE === */
+.campo-ingredientes {
+  width: 80%;
+  max-width: 500px;
+  background-color: #f2eae2;
+  color: #4e3d32;
+  font-size: 1em;
+}
+
 /* Estilo del botón */
-button {
+.boton-buscar {
   background-color: #c8a97e;
   color: white;
   font-weight: bold;
@@ -169,11 +159,12 @@ button {
 }
 
 /* Efecto para cuando se pasa el mouse por encima del botón */
-button:hover {
+.boton-buscar:hover {
   transform: scale(1.1); /* Lo agranda un poco */
   background-color: #a67c52; /* Un tono más oscuro */
   box-shadow: 2px 2px 8px rgba(160, 125, 96, 0.3);
 }
+
 
 /* Resultado estilo tarjeta */
 #resultados .ingrediente {
