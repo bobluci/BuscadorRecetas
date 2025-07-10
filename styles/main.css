@@ -1,7 +1,7 @@
 /* Estilo general */
 body {
   margin: 0;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Quicksand', sans-serif; /* tipo de fuente*/
   background-color: #f8f1e7; /* tono nude claro */
   color: #4e3d32; /* marrón suave */
   background-image: url('https://www.transparenttextures.com/patterns/white-wall-3.png');
@@ -41,6 +41,7 @@ h2, h3 {
   padding: 10px 20px;
   border-radius: 10px;
 }
+
 /* Estilo de la sección del contenido principal */
 .contenido {
   text-align: center;
