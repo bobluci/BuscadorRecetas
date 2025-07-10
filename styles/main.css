@@ -17,8 +17,9 @@ h2, h3 {
 /* Sección del encabezado con imagen */
 .encabezado {
   position: relative;
-  text-align: center;
-  color: white;
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden; /* Por si hay exceso de contenido superpuesto */
 }
 
 /* Imagen de fondo en el encabezado */
@@ -40,6 +41,45 @@ h2, h3 {
   background-color: rgba(0, 0, 0, 0.4); /* fondo medio transparente */
   padding: 10px 20px;
   border-radius: 10px;
+}
+
+/* 🖼 Imagen del banner que se adapta sin recortes */
+.banner {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover; /* Asegura que no se deforme ni se corte */
+  display: block;
+}
+
+/* 🪄 Cuadro de texto superpuesto con fondo negro semi-transparente */
+.overlay-texto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo negro translúcido */
+  padding: 20px 30px;
+  border-radius: 12px;
+  text-align: center;
+  z-index: 1;
+}
+
+/* ✏️ Título principal con fuente elegante e impacto */
+.overlay-texto h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5em;
+  color: white;
+  margin: 0;
+  line-height: 1.2;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+/* 📋 Subtítulo con emoji y coherencia visual */
+.overlay-texto h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.5em;
+  color: white;
+  margin: 10px 0 0;
 }
 
 /* Estilo de la sección del contenido principal */
