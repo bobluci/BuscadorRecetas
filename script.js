@@ -72,33 +72,25 @@ function buscarRecetas() {
   const input = document.getElementById("ingredientes").value;
   const ingredientesTraducidos = traducir(input.split(",")).join(",");
 
-  const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientesTraducidos}&number=5&apiKey=d0e372edd1ae494c937ae7c2d8adce32`;
-  const contenedor = document.getElementById("resultados");
+  const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodeURIComponent(ingredientesTraducidos)}&number=5&apiKey=d0e372edd1ae494c937ae7c2d8adce32`;
 
+  const contenedor = document.getElementById("resultados");
   contenedor.innerHTML = "<p>Buscando recetas...</p>";
 
   fetch(url)
-    .then(res => res.json())
+    .then(r => r.json())
     .then(data => {
       contenedor.innerHTML = "";
-
-      if (!data || data.length === 0) {
+      if (!data.length) {
         contenedor.innerHTML = "<p>No se encontraron recetas.</p>";
         return;
       }
-
       data.forEach(receta => {
-        const div = document.createElement("div");
-        div.classList.add("receta");
-
-        div.innerHTML = `
-          <h2>${receta.title}</h2>
-          <img src="${receta.image}" alt="${receta.title}" width="300" />
-          <p><a href="https://spoonacular.com/recipes/${receta.title.replace(/\s+/g, "-")}-${receta.id}" target="_blank">Ver receta completa</a></p>
-          <hr>
-        `;
-
-        contenedor.appendChild(div);
+        contenedor.innerHTML += `
+          <h3>${receta.title}</h3>
+          <img src="${receta.image}" width="280">
+          <p><a target="_blank" href="https://spoonacular.com/recipes/${receta.title.replace(/\s+/g,'-')}-${receta.id}">Ver receta completa</a></p>
+          <hr>`;
       });
     })
     .catch(err => {
