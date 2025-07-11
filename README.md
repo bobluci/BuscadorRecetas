@@ -35,6 +35,20 @@ Este proyecto incluye un análisis exploratorio visual mediante un Dashboard:
 
 ---
 
+## 👩‍💻 Tecnologías usadas
+
+Para la elaboración de este proyecto hicimos uso de:
+
+- **HTML:** Para la estructura del contenido web. ✏️
+- **CSS:** Para el diseño y estilo de la interfaz de usuario. 🖌️
+- **JavaScript:** Para la lógica interactiva del lado del cliente y la integración con la API. 🔎
+- **Spoonacular API:** Para la obtención de datos de recetas. 🍽️
+- **GitHub Pages:** Para el despliegue del sitio web. ✔️
+- **Python:** Para el análisis de datos y la generación de gráficos del dashboard. 📊
+
+
+---
+
 ## 🌐 Sitio web
 
 Accede al proyecto en línea vía GitHub Pages:  
