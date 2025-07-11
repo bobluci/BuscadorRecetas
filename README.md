@@ -9,7 +9,7 @@ Aplicación web que sugiere recetas en función de los ingredientes disponibles 
 Para que el proyecto funcione debes tener una clave gratuita de Spoonacular:
 1. Ve a Spoonacular API
 2. Regístrate y genera tu clave personal.
-3. Reemplaza "TU_API_KEY" en script.js por tu clave.
+3. Reemplaza "TU_API_KEY" en ".env" por tu clave.
 ⚠️ No compartas tu clave en repositorios públicos.
 
 ---
