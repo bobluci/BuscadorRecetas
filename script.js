@@ -1,6 +1,4 @@
-const API_KEY = "TU_API_KEY"; // ← Reemplaza esto con tu clave real
-
-// Diccionario de ingredientes español → inglés
+// Traducción español → inglés
 const diccionario = {
   "pollo": "chicken",
   "papa": "potato",
@@ -66,28 +64,17 @@ const diccionario = {
   "garbanzos": "chickpeas"
 };
 
-// Traduce una lista de ingredientes en español
 function traducir(ingredientesEsp) {
   return ingredientesEsp.map(esp => diccionario[esp.trim().toLowerCase()] || esp.trim().toLowerCase());
 }
 
-// Función principal para buscar recetas
 function buscarRecetas() {
   const input = document.getElementById("ingredientes").value;
-  const tipo = document.getElementById("tipo").value;
-  const tiempo = document.getElementById("tiempo").value;
-  const dieta = document.getElementById("dieta").value;
+  const ingredientesTraducidos = traducir(input.split(",")).join(",");
 
-  const ingredientesArray = input.split(",");
-  const ingredientes = traducir(ingredientesArray).join(",");
-
-  let url = `https://api.spoonacular.com/recipes/complexSearch?includeIngredients=${ingredientes}&number=10&apiKey=${API_KEY}`;
-
-  if (tipo) url += `&type=${tipo}`;
-  if (tiempo) url += `&maxReadyTime=${tiempo}`;
-  if (dieta) url += `&diet=${dieta}`;
-
+  const url = `http://127.0.0.1:5000/buscar?ingredientes=${ingredientesTraducidos}`;
   const contenedor = document.getElementById("resultados");
+
   contenedor.innerHTML = "<p>Buscando recetas...</p>";
 
   fetch(url)
@@ -95,38 +82,27 @@ function buscarRecetas() {
     .then(data => {
       contenedor.innerHTML = "";
 
-      if (!data.results || data.results.length === 0) {
-        contenedor.innerHTML = "<p>No se encontraron recetas con esos filtros.</p>";
+      if (!data || data.length === 0) {
+        contenedor.innerHTML = "<p>No se encontraron recetas.</p>";
         return;
       }
 
-      data.results.forEach(receta => {
-        const divReceta = document.createElement('div');
-        divReceta.classList.add('receta');
+      data.forEach(receta => {
+        const div = document.createElement("div");
+        div.classList.add("receta");
 
-        const titulo = document.createElement('h2');
-        titulo.textContent = receta.title;
-        divReceta.appendChild(titulo);
+        div.innerHTML = `
+          <h2>${receta.title}</h2>
+          <img src="${receta.image}" alt="${receta.title}" width="300" />
+          <p><a href="https://spoonacular.com/recipes/${receta.title.replace(/\s+/g, "-")}-${receta.id}" target="_blank">Ver receta completa</a></p>
+          <hr>
+        `;
 
-        const imagen = document.createElement('img');
-        imagen.src = receta.image;
-        imagen.alt = `Imagen de ${receta.title}`;
-        divReceta.appendChild(imagen);
-
-        const link = document.createElement('a');
-        link.href = `https://spoonacular.com/recipes/${receta.title.replace(/\s+/g, '-')}-${receta.id}`;
-        link.textContent = "Ver receta completa";
-        link.target = "_blank";
-        divReceta.appendChild(link);
-
-        const hr = document.createElement('hr');
-        divReceta.appendChild(hr);
-
-        contenedor.appendChild(divReceta);
+        contenedor.appendChild(div);
       });
     })
     .catch(err => {
-      console.error("Error:", err);
-      alert("Ocurrió un error al buscar las recetas. Verifica tu conexión o tu clave API.");
+      console.error(err);
+      contenedor.innerHTML = "<p>Error al buscar recetas. Intenta más tarde.</p>";
     });
 }
