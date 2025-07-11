@@ -28,7 +28,7 @@ Para que el proyecto funcione debes tener una clave gratuita de Spoonacular:
 
 Este proyecto incluye un análisis exploratorio visual mediante un Dashboard:
 
-- 🥕 Ingredientes más frecuentes
+- 🥕 Ingredientes más frecuentes en recetas cetogénicas o "keto"
 - 🧡 Recetas veganas con mayor número de likes
 - ⏱️ Recetas veganas más rápidas de preparar
 - ⚡ Relación entre likes y tiempo de preparación
