@@ -72,7 +72,7 @@ function buscarRecetas() {
   const input = document.getElementById("ingredientes").value;
   const ingredientesTraducidos = traducir(input.split(",")).join(",");
 
-  const url = `http://127.0.0.1:5000/buscar?ingredientes=${ingredientesTraducidos}`;
+  const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientesTraducidos}&number=5&apiKey=d0e372edd1ae494c937ae7c2d8adce32`;
   const contenedor = document.getElementById("resultados");
 
   contenedor.innerHTML = "<p>Buscando recetas...</p>";
