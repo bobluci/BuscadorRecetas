@@ -165,6 +165,23 @@ label {
   box-shadow: 2px 2px 8px rgba(160, 125, 96, 0.3);
 }
 
+/* Estilo del botón para el dashboard */
+.boton-dashboard {
+  background-color: #8b5e3c; /* Marrón más oscuro */
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  padding: 10px 25px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Cambio en el estilo del botón del dashboard al introducir el cursor */
+.boton-dashboard:hover {
+  transform: scale(1.1); /* Agrandamiento suave */
+  background-color: #754c2e; /* Marrón más profundo al pasar el mouse */
+  box-shadow: 2px 2px 8px rgba(117, 76, 46, 0.3);
+}
 
 /* Resultado estilo tarjeta */
 #resultados .ingrediente {
